@@ -160,7 +160,7 @@ LOGGING = {
             'level': 'DEBUG',
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
-        }
+        },
     },
     'loggers': {
         'django.request': {
