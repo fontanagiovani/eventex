@@ -14,3 +14,16 @@ class SimpleTest(TestCase):
         Tests that 1 + 1 always equals 2.
         """
         self.assertEqual(1 + 1, 2)
+
+
+class HomepageTest(TestCase):
+    def setUp(self):
+        self.resp = self.client.get('/')
+
+    def test_get(self):
+        'GET / must return status code 200.'
+        self.assertEqual(200, self.resp.status_code)
+
+    def test_get_index(self):
+        'Homepage must use template index.html'
+        self.assertTemplateUsed(self.resp, 'index.html')
