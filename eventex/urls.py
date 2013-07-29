@@ -1,10 +1,11 @@
+#coding utf-8
 from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('eventex.core.views',
+urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'eventex.views.home', name='home'),
     # url(r'^eventex/', include('eventex.foo.urls')),
@@ -14,7 +15,8 @@ urlpatterns = patterns('eventex.core.views',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'homepage', name='homepage'),
+    url(r'^$', 'eventex.core.views.homepage', name='homepage'),
+    url(r'^inscricao/', 'eventex.subscriptions.views.subscribe', name='subscribe'),
 )
 
 from django.conf import settings

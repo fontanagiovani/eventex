@@ -1,3 +1,4 @@
+#coding utf-8
 # Django settings for eventex project.
 from unipath import Path
 import dj_database_url
@@ -29,6 +30,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
+#ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '.herokuapp.com']
 
 # Local time zone for this installation. Choices can be found here:
@@ -126,12 +128,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'eventex.core',
+    'eventex.subscriptions',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'eventex.core',
-    #'eventex.subscriptions',
 )
 
 # A sample logging configuration. The only tangible logging
