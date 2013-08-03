@@ -1,5 +1,5 @@
 #coding: utf-8
-from django.test.testcases import TestCase
+from django.test import TestCase
 from eventex.subscriptions.forms import SubscriptionForm
 from eventex.subscriptions.models import Subscription
 
