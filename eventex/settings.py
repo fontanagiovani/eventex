@@ -5,6 +5,12 @@ import dj_database_url
 import os
 PROJECT_DIR = Path(__file__).parent
 
+# Usar o South para preparar o banco nos testes?
+# True: Sim. (default)
+# False: Nao! Use o Syncdb
+SOUTH_TESTS_MIGRATE = False
+
+
 DEBUG = True
 DEBUG = os.environ.get('DEBUG') == 'True'
 TEMPLATE_DEBUG = DEBUG
@@ -128,12 +134,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admin',
+    'south',
     'eventex.core',
     'eventex.subscriptions',
-    # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
 )
 
 # A sample logging configuration. The only tangible logging

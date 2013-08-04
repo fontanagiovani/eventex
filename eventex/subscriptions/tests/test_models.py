@@ -11,7 +11,7 @@ class SubscriptionTest(TestCase):
             name='Giovani Jose Fontana',
             cpf='012345678901',
             email='fontanagiovani@gmail.com',
-            phone='65-96193650'
+            phone='65-98765432'
         )
 
     def test_create(self):
@@ -27,6 +27,10 @@ class SubscriptionTest(TestCase):
     def test_unicode(self):
         self.assertEqual(u"Giovani Jose Fontana", unicode(self.obj))
 
+    def test_paid_default_value_is_False(self):
+        'By default paid must be False.'
+        self.assertEqual(False, self.obj.paid)
+
 
 class SubscriptionUniqueTest(TestCase):
     def setUp(self):
@@ -34,7 +38,7 @@ class SubscriptionUniqueTest(TestCase):
             name='Giovani José Fontana',
             cpf='12345678901',
             email='fontanagiovani@gmail.com',
-            phone='65-96193650'
+            phone='65-98765432'
         )
 
     def test_cpf_unique(self):
@@ -43,7 +47,7 @@ class SubscriptionUniqueTest(TestCase):
             name='Giovani José Fontana',
             cpf='12345678901',
             email='giovani@gmail.com',
-            phone='65-96193650'
+            phone='65-98765432'
         )
         self.assertRaises(IntegrityError, s.save)
 
@@ -53,6 +57,6 @@ class SubscriptionUniqueTest(TestCase):
             name='Giovani José Fontana',
             cpf='12345678902',
             email='fontanagiovani@gmail.com',
-            phone='65-96193650'
+            phone='65-98765432'
         )
         self.assertRaises(IntegrityError, s.save)
