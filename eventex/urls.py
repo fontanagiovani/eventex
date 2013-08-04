@@ -7,8 +7,8 @@ from django.conf import settings
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-                       url(r'^inscricao/', include('eventex.subscriptions.urls'), name='subscriptions'),
-                       url(r'', include('eventex.core.urls'), name='core'),
+                       url(r'^inscricao/', include('eventex.subscriptions.urls', namespace='subscriptions')),
+                       url(r'', include('eventex.core.urls', namespace='core')),
                        )
 
 
