@@ -19,6 +19,7 @@ class SubscriptionAdmin(admin.ModelAdmin):
 
     actions = ['mark_as_paid']
 
+    # Mark as paid
     def mark_as_paid(self, request, queryset):
         count = queryset.update(paid=True)
         msg = ungettext(
