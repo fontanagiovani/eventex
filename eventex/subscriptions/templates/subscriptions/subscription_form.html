@@ -20,8 +20,7 @@
         </p>
         <p>
             <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}:</label>
-            <input type="text" name="phone_0" value="" id="id_phone_0">
-            <input type="text" name="phone_1" value="" id="id_phone_1">
+            {{ form.phone }}
             {{ form.phone.errors }}
         </p>
         <input type="submit" value="Enviar!" class="button" >
