@@ -11,4 +11,5 @@ Scripts
 *~
 *.db
 .DS_Store
+.idea
 eventex/static
