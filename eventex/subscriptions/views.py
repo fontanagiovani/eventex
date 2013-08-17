@@ -14,10 +14,10 @@ def subscribe(request):
 
 
 def detail(request, pk):
-    subscription = get_object_or_404(Subscription, pk=pk)
+    sub = get_object_or_404(Subscription, pk=pk)
     return render(request,
                   'subscriptions/subscription_detail.html',
-                  {'subscription': subscription})
+                  {'subscription': sub})
 
 
 def new(request):

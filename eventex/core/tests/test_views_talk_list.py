@@ -1,10 +1,33 @@
 # coding: utf-8
 from django.test import TestCase
 from django.core.urlresolvers import reverse as r
+from eventex.core.models import Speaker, Talk
 
 
 class TalkListTest(TestCase):
     def setUp(self):
+        s = Speaker.objects.create(
+            name=u'Giovani Fontana',
+            slug='giovani-fontana',
+            url='http://eventex-fontanagiovani.herokuapp.com',
+            description='De volta ao desenvolvimento de software!'
+        )
+
+        t1 = Talk.objects.create(
+            description=u'Decrição da palestra',
+            title=u'Título da palestra',
+            start_time='10:00'
+        )
+
+        t2 = Talk.objects.create(
+            description=u'Decrição da palestra',
+            title=u'Título da palestra',
+            start_time='13:00'
+        )
+
+        t1.speakers.add(s)
+        t2.speakers.add(s)
+
         self.resp = self.client.get(r('core:talk_list'))
 
     def test_get(self):
@@ -20,10 +43,10 @@ class TalkListTest(TestCase):
         self.assertContains(self.resp, u'Título da palestra', 2)
         self.assertContains(self.resp, u'/palestras/1/')
         self.assertContains(self.resp, u'/palestras/2/')
-        self.assertContains(self.resp, u'/palestrantes/giovani-j-fontana/', 2)
+        self.assertContains(self.resp, u'/palestrantes/giovani-fontana/', 2)
         self.assertContains(self.resp, u'De volta ao desenvolvimento de software!', 2)
-        self.assertContains(self.resp, u'Giovani José Fontana', 2)
-        self.assertContains(self.resp, u'Descrição da palestra', 2)
+        self.assertContains(self.resp, u'Giovani Fontana', 2)
+        self.assertContains(self.resp, u'Decrição da palestra', 2)
 
     def test_morning_talks_in_context(self):
         self.assertIn('morning_talks', self.resp.context)
