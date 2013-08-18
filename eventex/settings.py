@@ -138,6 +138,7 @@ INSTALLED_APPS = (
     'south',
     'eventex.core',
     'eventex.subscriptions',
+    'eventex.myauth',
 )
 
 # A sample logging configuration. The only tangible logging
