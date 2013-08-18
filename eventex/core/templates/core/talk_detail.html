@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h4>{{ talk.title }}</h4>
+    {% for speaker in talk.speakers.all %}
+        <h5>
+        <a href="{{ speaker.get_absolute_url }}"
+           title="{{ speaker.description|truncatewords:20 }}">
+            {{ speaker.name }}
+           </a>
+        </h5>
+    {% endfor %}
+    <p>{{ talk.description }}</p>
+{% endblock content %}
