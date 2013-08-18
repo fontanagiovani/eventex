@@ -16,10 +16,9 @@ def speaker_detail(request, slug):
 
 
 def talk_list(request):
-    midday = time(12)
     context = {
-        'morning_talks': Talk.objects.filter(start_time__lt=midday),
-        'afternoon_talks': Talk.objects.filter(start_time__gte=midday),
-        }
+        'morning_talks': Talk.objects.at_morning(),
+        'afternoon_talks': Talk.objects.at_afternoon()
+    }
 
     return render(request, 'core/talk_list.html', context)
