@@ -80,3 +80,11 @@ class Media(models.Model):
 
     def __unicode__(self):
         return u'%s - %s' % (self.talk.title, self.title)
+
+    @property
+    def slides(self):
+        return self.media_set.filter(kind='SL')
+
+    @property
+    def videos(self):
+        return self.media_set.filter(kind='YT')

@@ -22,19 +22,13 @@ class TalkDetailTest(TestCase):
     def test_template(self):
         self.assertTemplateUsed(self.resp, 'core/talk_detail.html')
 
-    def test_tail_in_context(self):
+    def test_talk_in_context(self):
         talk = self.resp.context['talk']
         self.assertIsInstance(talk, Talk)
 
     def test_not_found(self):
         response = self.client.get(r('core:talk_detail', args=[0]))
         self.assertEqual(404, response.status_code)
-
-    def test_videos_in_context(self):
-        self.assertIn('videos', self.resp.context)
-
-    def test_slides_in_context(self):
-        self.assertIn('slides', self.resp.context)
 
     def test_html(self):
         self.assertContains(self.resp, 'Talk')
