@@ -65,3 +65,18 @@ class Course(Talk):
     notes = models.TextField()
 
     objects = PeriodManager()
+
+
+class Media(models.Model):
+    MEDIAS = (
+        ('YT', _('YoutTube')),
+        ('SL', _('SlideShare')),
+    )
+
+    talk = models.ForeignKey('Talk')
+    kind = models.CharField(_('Tipo'), max_length=2, choices=MEDIAS)
+    title = models.CharField(_(u'Título'), max_length=2)
+    media_id = models.CharField(_('Ref'), max_length=255)
+
+    def __unicode__(self):
+        return u'%s - %s' % (self.talk.title, self.title)
