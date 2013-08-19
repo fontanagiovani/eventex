@@ -34,9 +34,12 @@ DATABASES = {
     #}
 }
 
-AUTHENTICATION_BACKENDS = (
-    'eventex.myauth.backends.EmailBackend',
-)
+#AUTHENTICATION_BACKENDS = (
+#    'eventex.myauth.backends.EmailBackend',
+#    'django.contrib.auth.backends.ModelBackend',
+#
+
+AUTH_USER_MODEL='myauth.User'
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
